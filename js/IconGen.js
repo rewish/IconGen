@@ -87,7 +87,7 @@
 	IconGen.prototype.setupFrames = function() {
 		if (!this.options.framePaths
 				|| this.options.framePaths.length === 0) {
-			return;
+			throw new Error();
 		}
 
 		var framePaths = this.options.framePaths,

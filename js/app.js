@@ -38,7 +38,7 @@
 					}
 				},
 				onRendered: function(drawInfo) {
-					realSize.innerHTML = drawInfo.width + 'x' + drawInfo.height;
+					realSize.innerHTML = drawInfo.size + 'x' + drawInfo.size;
 					download.href = this.getFileURL();
 					download.download = this.getFileName();
 				},

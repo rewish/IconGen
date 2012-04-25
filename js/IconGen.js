@@ -207,7 +207,7 @@
 		var fn = this.options[name],
 		    args = [],
 		    len = arguments.length,
-			i = 1;
+		    i = 1;
 
 		for (; i < len; ++i) {
 			args[args.length] = arguments[i];

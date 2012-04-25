@@ -55,10 +55,8 @@
 		}
 
 		this.canvas  = canvas;
-		this.context = this.canvas.getContext('2d');
 
 		this.setOptions(options);
-		this.setupReader();
 		this.setupFrames();
 	};
 
@@ -79,19 +77,6 @@
 
 	IconGen.prototype.setDrawSize = function(drawSize) {
 		this.options.drawSize = drawSize;
-	};
-
-	IconGen.prototype.setupReader = function() {
-		var self = this;
-		this.reader = new FileReader();
-		this.reader.onload = function() {
-			var image = new Image();
-			image.onload = function() {
-				self.image = this;
-				self.render();
-			};
-			image.src = self.reader.result;
-		};
 	};
 
 	IconGen.prototype.setupFrames = function() {
@@ -125,8 +110,22 @@
 			this.callback('onFileTypeError');
 			return;
 		}
+
 		this.fileName = file.name;
-		this.reader.readAsDataURL(file);
+
+		var self = this,
+		    reader = new FileReader();
+
+		reader.onload = function() {
+			var image = new Image();
+			image.onload = function() {
+				self.image = this;
+				self.render();
+			};
+			image.src = reader.result;
+		};
+
+		reader.readAsDataURL(file);
 	};
 
 	IconGen.prototype.changeFrame = function(index) {
@@ -144,16 +143,17 @@
 			this.callback('onRenderError');
 		}
 
-		var drawInfo = this.getDrawInfo();
+		var drawInfo = this.getDrawInfo(),
+		    context = this.canvas.getContext('2d');
 
 		this.canvas.width  = drawInfo.size;
 		this.canvas.height = drawInfo.size;
 
-		this.context.clearRect(0, 0, drawInfo.size, drawInfo.size);
-		this.context.drawImage(this.image, drawInfo.x, drawInfo.y, drawInfo.width, drawInfo.height);
+		context.clearRect(0, 0, drawInfo.size, drawInfo.size);
+		context.drawImage(this.image, drawInfo.x, drawInfo.y, drawInfo.width, drawInfo.height);
 
 		if (this.frame) {
-			this.context.drawImage(this.frame, 0, 0, drawInfo.size, drawInfo.size);
+			context.drawImage(this.frame, 0, 0, drawInfo.size, drawInfo.size);
 		}
 
 		this.callback('onRendered', drawInfo);

@@ -197,7 +197,7 @@
 	};
 
 	IconGen.prototype.getFileName = function() {
-		return this.fileName.replace(/\.\w+$/, this.options.suffix + '$&');
+		return this.fileName.replace(/\.\w+$/, this.options.suffix + '.png');
 	};
 
 	IconGen.prototype.exit = function() {

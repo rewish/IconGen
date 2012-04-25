@@ -40,7 +40,6 @@
 		suffix: '_ig',
 		drawSize: 100,
 		framePaths: null,
-		mimeType: 'image/png',
 		onReadFile: null,
 		onFileTypeError: null,
 		onRenderError: null,
@@ -194,7 +193,7 @@
 	};
 
 	IconGen.prototype.getFileURL = function() {
-		var dataURL = this.canvas.toDataURL(this.options.mimeType);
+		var dataURL = this.canvas.toDataURL('image/png');
 		if (URL && dataURLtoBlob) {
 			return URL.createObjectURL(dataURLtoBlob(dataURL));
 		}

@@ -37,7 +37,7 @@
 	};
 
 	IconGen.defaultOptions = {
-		suffix: '_icongen',
+		suffix: '_ig',
 		drawSize: 100,
 		framePaths: null,
 		mimeType: 'image/png',

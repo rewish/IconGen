@@ -144,36 +144,35 @@
 			this.callback('onRenderError');
 		}
 
-		var drawSize = this.options.drawSize,
-		    drawInfo = this.getDrawInfo();
+		var drawInfo = this.getDrawInfo();
 
-		this.canvas.width  = drawSize;
-		this.canvas.height = drawSize;
+		this.canvas.width  = drawInfo.size;
+		this.canvas.height = drawInfo.size;
 
-		this.context.clearRect(0, 0, drawSize, drawSize);
+		this.context.clearRect(0, 0, drawInfo.size, drawInfo.size);
 		this.context.drawImage(this.image, drawInfo.x, drawInfo.y, drawInfo.width, drawInfo.height);
 
 		if (this.frame) {
-			this.context.drawImage(this.frame, 0, 0, drawSize, drawSize);
+			this.context.drawImage(this.frame, 0, 0, drawInfo.size, drawInfo.size);
 		}
 
 		this.callback('onRendered', drawInfo);
 	};
 
 	IconGen.prototype.getDrawInfo = function() {
-		var drawSize = this.options.drawSize,
-			drawInfo = {
-				width: drawSize,
-				height: drawSize,
-				x: 0,
-				y: 0,
-				scale: 0
-			};
+		var drawInfo = {
+			size: this.options.drawSize,
+			width: this.options.drawSize,
+			height: this.options.drawSize,
+			x: 0,
+			y: 0,
+			scale: 0
+		};
 
 		if (this.image.width > this.image.height) {
-			drawInfo.scale = drawSize / this.image.width;
+			drawInfo.scale = drawInfo.size / this.image.width;
 		} else if (this.image.height > this.image.width) {
-			drawInfo.scale = drawSize / this.image.height;
+			drawInfo.scale = drawInfo.size / this.image.height;
 		}
 
 		if (drawInfo.scale) {
@@ -181,8 +180,8 @@
 			drawInfo.height = Math.round(this.image.height * drawInfo.scale);
 		}
 
-		drawInfo.x = (drawSize - drawInfo.width) / 2;
-		drawInfo.y = (drawSize - drawInfo.height) / 2;
+		drawInfo.x = (drawInfo.size - drawInfo.width) / 2;
+		drawInfo.y = (drawInfo.size - drawInfo.height) / 2;
 
 		return drawInfo;
 	};

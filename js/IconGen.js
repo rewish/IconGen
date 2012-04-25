@@ -53,25 +53,30 @@
 		if (!canvas) {
 			throw new Error();
 		}
-
-		this.canvas  = canvas;
-
+		this.canvas = canvas;
 		this.setOptions(options);
-		this.setupFrames();
 	};
 
 	IconGen.prototype.setOptions = function(options) {
 		var key;
+
 		if (typeof this.options !== 'object') {
 			this.options = {};
 			for (key in IconGen.defaultOptions) {
 				this.options[key] = IconGen.defaultOptions[key];
 			}
 		}
-		if (typeof options === 'object') {
-			for (key in options) {
-				this.options[key] = options[key];
-			}
+
+		if (typeof options !== 'object') {
+			return;
+		}
+
+		for (key in options) {
+			this.options[key] = options[key];
+		}
+
+		if ('framePaths' in options) {
+			this.setupFrames();
 		}
 	};
 

@@ -1,0 +1,64 @@
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background: #d8d5cd;
+}
+
+h1 {
+	text-align: center;
+	color: #FFF;
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+#ig-main {
+	width: 400px;
+	margin: 0 auto 10px;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+	background: #FFF;
+}
+
+#ig-drawArea {
+	display: none;
+}
+
+#ig-drawArea div.ig-drawSize,
+#ig-drawArea div.ig-result {
+	margin: 0 0 10px;
+}
+
+#ig-drawSize {
+	width: 300px;
+}
+
+#ig-controls {
+	display: none;
+	list-style: none;
+	padding: 0;
+}
+
+#ig-controls li {
+	display: inline;
+	margin-right: 20px;
+}
+
+#ig-controls a {
+	vertical-align: middle;
+}
+
+.ig-nojs #ig-upload,
+.ig-notSupport {
+	display: none;
+}
+
+.ig-nojs .ig-notSupport {
+	display: block;
+}
+
+.ig-nojs #ig-main {
+	text-align: left;
+}

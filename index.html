@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>IconGen</title>
+	<link rel="stylesheet" href="css/app.css">
+	<script src="js/canvas-to-blob/canvas-to-blob.min.js"></script>
+	<script src="js/html5slider/html5slider.js"></script>
+	<script src="js/IconGen.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body class="ig-nojs">
+<script>IconGen.enable();</script>
+
+<h1>IconGen</h1>
+
+<div id="ig-main">
+	<div class="ig-notSupport">
+		<p>このブラウザは対応してないですやん！</p>
+		<ul>
+			<li>Chrome 6 以上</li>
+			<li>Firefox 3.6 以上</li>
+			<li>Opera 11.1 以上</li>
+			<li>IE 10 以上</li>
+		</ul>
+		<p>で動く可能性があるそうよ！</p>
+	</div>
+
+	<div id="ig-drawArea">
+		<div class="ig-drawSize">Size: <input id="ig-drawSize" type="range" value="100" min="16" max="400"></div>
+		<div class="ig-result"><img id="ig-result" src="" alt=""></div>
+		<div id="ig-realSize"></div>
+	</div>
+
+	<div id="ig-upload">
+		<p>ここに画像をドロップするかファイルを選択してや！<br><input type="file" id="ig-fileField"></p>
+		<p>※画像のサイズが大きすぎるとシンドイ</p>
+	</div>
+	<ul id="ig-controls">
+		<li>
+			<select id="ig-frameList">
+				<option value="frame/01.png" selected="selected">frame1</option>
+				<option value="frame/02.png">frame2</option>
+				<option value="frame/03.png">frame3</option>
+			</select>
+		</li>
+		<li><a href="javascript:void(0)" id="ig-download">Download</a></li>
+		<li><a href="javascript:void(0)" id="ig-exit">Exit</a></li>
+	</ul>
+</div>
+
+</body>
+</html>

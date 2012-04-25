@@ -26,9 +26,10 @@
 		if (!IconGen.isSupport) {
 			return;
 		}
+
 		var body = document.body,
-		    className = body.getAttribute('class');
-		className = className.replace(/ig-nojs/g, '');
+		    className = body.getAttribute('class').replace(/ig-nojs/g, '');
+
 		if (className === '') {
 			body.removeAttribute('class');
 		} else {

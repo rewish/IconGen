@@ -15,7 +15,7 @@
 		var main		= document.getElementById('ig-main'),
 			drawArea	= document.getElementById('ig-drawArea'),
 			drawSize	= document.getElementById('ig-drawSize'),
-			result		= document.getElementById('ig-result'),
+			canvas		= document.getElementById('ig-result'),
 			realSize	= document.getElementById('ig-realSize'),
 			upload		= document.getElementById('ig-upload'),
 			fileField	= document.getElementById('ig-fileField'),
@@ -23,7 +23,7 @@
 			controls	= document.getElementById('ig-controls'),
 			download	= document.getElementById('ig-download'),
 			exit		= document.getElementById('ig-exit'),
-			iconGen		= new IconGen(result, {
+			iconGen		= new IconGen(canvas, {
 				framePaths: frameList.options,
 				onFileTypeError: function() {
 					alert('画像にしなはれや！');

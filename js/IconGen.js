@@ -12,9 +12,9 @@
 	    rimage = /image\/\w+/,
 	    URL = window.URL || window.webkitURL;
 
-	IconGen = function(imgNode, options) {
+	IconGen = function(canvas, options) {
 		if (!(this instanceof IconGen)) {
-			return new IconGen(imgNode, options);
+			return new IconGen(canvas, options);
 		}
 		this.initialize.apply(this, arguments);
 		return this;
@@ -49,14 +49,16 @@
 		onExit: null
 	};
 
-	IconGen.prototype.initialize = function(imgNode, options) {
-		if (!imgNode) {
+	IconGen.prototype.initialize = function(canvas, options) {
+		if (!canvas) {
 			throw new Error();
 		}
-		this.imgNode = imgNode;
+
+		this.canvas  = canvas;
+		this.context = this.canvas.getContext('2d');
+
 		this.setOptions(options);
 		this.setupReader();
-		this.setupCanvas();
 		this.setupFrames();
 	};
 
@@ -90,11 +92,6 @@
 			};
 			image.src = self.reader.result;
 		};
-	};
-
-	IconGen.prototype.setupCanvas = function() {
-		this.canvas  = document.createElement('canvas');
-		this.context = this.canvas.getContext('2d');
 	};
 
 	IconGen.prototype.setupFrames = function() {
@@ -159,8 +156,6 @@
 		if (this.frame) {
 			this.context.drawImage(this.frame, 0, 0, drawSize, drawSize);
 		}
-
-		this.imgNode.setAttribute('src', this.canvas.toDataURL(this.options.mimeType));
 
 		this.callback('onRendered', drawInfo);
 	};

@@ -91,20 +91,13 @@
 		}
 
 		var framePaths = this.options.framePaths,
-		    framePath,
-		    len = framePaths.length
-		    i = 0;
+		    framePath, i = 0;
 
-		this.frames = new Array(len);
+		this.frames = new Array(framePaths.length);
 
-		for (; i < len; ++i) {
+		for (; framePath = framePaths[i]; ++i) {
 			this.frames[i] = new Image();
-			framePath = this.options.framePaths[i];
-			if ('value' in framePath) {
-				this.frames[i].src = framePath.value;
-			} else {
-				this.frames[i].src = framePath;
-			}
+			this.frames[i].src = framePath.value || framePath;
 		}
 
 		this.frame = this.frames[0];

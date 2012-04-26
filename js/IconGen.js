@@ -169,23 +169,16 @@
 	IconGen.prototype.getDrawInfo = function() {
 		var drawInfo = {
 			size: this.options.drawSize,
-			width: this.options.drawSize,
-			height: this.options.drawSize,
+			scale: 0,
+			width: 0,
+			height: 0,
 			x: 0,
-			y: 0,
-			scale: 0
+			y: 0
 		};
 
-		if (this.image.width > this.image.height) {
-			drawInfo.scale = drawInfo.size / this.image.width;
-		} else if (this.image.height > this.image.width) {
-			drawInfo.scale = drawInfo.size / this.image.height;
-		}
-
-		if (drawInfo.scale) {
-			drawInfo.width  = Math.round(this.image.width * drawInfo.scale);
-			drawInfo.height = Math.round(this.image.height * drawInfo.scale);
-		}
+		drawInfo.scale  = drawInfo.size / Math.max(this.image.width, this.image.height);
+		drawInfo.width  = Math.round(this.image.width * drawInfo.scale);
+		drawInfo.height = Math.round(this.image.height * drawInfo.scale);
 
 		drawInfo.x = (drawInfo.size - drawInfo.width) / 2;
 		drawInfo.y = (drawInfo.size - drawInfo.height) / 2;

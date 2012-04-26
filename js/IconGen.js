@@ -181,7 +181,8 @@
 
 	IconGen.prototype.getFileURL = function() {
 		var dataURL = this.canvas.toDataURL('image/png');
-		if (URL && dataURLtoBlob) {
+		if (typeof URL !== 'undefined'
+				&& typeof dataURLtoBlob !== 'undefined') {
 			return URL.createObjectURL(dataURLtoBlob(dataURL));
 		}
 		return dataURL;

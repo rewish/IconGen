@@ -24,6 +24,7 @@
 			download	= document.getElementById('ig-download'),
 			exit		= document.getElementById('ig-exit'),
 			iconGen		= new IconGen(canvas, {
+				drawSize: drawSize.value,
 				framePaths: frameList.options,
 				onFileTypeError: function() {
 					alert('画像にしなはれや！');

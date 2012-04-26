@@ -1,7 +1,7 @@
 /**
  * IconGen
  *
- * @version    0.1.1
+ * @version    0.1.2
  * @author     Hiroshi Hoaki <rewish.org@gmail.com>
  * @copyright  (c) 2012 Rewish
  * @license    http://rewish.org/license/mit The MIT License

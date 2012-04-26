@@ -1,6 +1,0 @@
-[submodule "js/html5slider"]
-	path = js/html5slider
-	url = git://github.com/fryn/html5slider.git
-[submodule "js/canvas-to-blob"]
-	path = js/canvas-to-blob
-	url = git://github.com/blueimp/JavaScript-Canvas-to-Blob.git

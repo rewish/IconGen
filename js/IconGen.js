@@ -50,7 +50,7 @@
 	};
 
 	IconGen.prototype.initialize = function(canvas, options) {
-		if (!canvas) {
+		if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
 			throw new Error();
 		}
 		this.canvas = canvas;
